@@ -1,0 +1,22 @@
+-----------------------------------------------------
+Conclusiones de los ejercicios
+Rol: Data QA Automation Engineer
+Candidato: Luis Rolando Chirinos Hualcas
+-----------------------------------------------------
+
+1. Herramienta seleccionada:
+    Seleccione Cypress.io como framework principal debido a su versatilidad para manejar tanto pruebas E2E como pruebas de servicios REST(api) en un solo ecosistema basado en Node.js. Esto reduce la curva de configuración, unifica los reportes y facilita la integración continua.
+
+2. Hallazgos e implementacion en E2E (SAUCEDEMO)
+    - Se implementó el patrón de diseño Page Object Model (POM) aislando los selectores de la lógica de negocio. Esto garantiza que el código sea altamente mantenible y escalable.
+    - Se priorizó el uso de atributos robustos (como 'data-test') en lugar de XPath absolutos para localizar los elementos, evitando que las pruebas se rompan ante cambios estéticos en el DOM.
+    - El flujo de autenticación, selección de inventario y checkout funcionó de manera estable y predecible.
+
+3. Hallazgos e implementacion en API (PETSTORE)
+    - Se validó con éxito el ciclo CRUD completo (POST, GET, PUT, DELETE) mediante el uso de 'cy.request()'.
+    - Estrategia de Datos (Data Isolation): Se reemplazó la generación aleatoria simple por timestamps (Date.now()) para asegurar IDs numéricos y usernames 100% únicos, eliminando el riesgo de colisiones de datos (Data Clashes) en la base de datos pública.
+    - Mantenimiento de Estado (Teardown): Se implementó un hook 'before()' para buscar y eliminar preventivamente cualquier registro residual antes de la ejecución, garantizando el principio de aislamiento de pruebas (Test Isolation).
+    - Se manejaron casos borde (Edge Cases) apagando deliberadamente la interrupción por fallos ('failOnStatusCode: false') para validar correctamente las respuestas 404 (Not Found) al verificar eliminaciones.
+
+CONCLUSIÓN FINAL:
+La automatización construida es robusta, maneja eficientemente los estados de los datos, sigue los estándares de ingeniería de calidad de la industria y está lista para ser integrada en un pipeline automatizado.
